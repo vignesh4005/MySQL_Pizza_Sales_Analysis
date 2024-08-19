@@ -139,9 +139,9 @@ WITH CTE_revenue AS (
 	SELECT MONTHNAME(date) AS month,
 	   ROUND(SUM(od.quantity*p.price), 2) AS revenue,
 	   ROW_NUMBER() OVER (ORDER BY FIELD(month, 
-										 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-										 )
-						  ) AS month_order
+					     'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+					     )
+			     ) AS month_order
 FROM orders AS o
 JOIN order_details AS od
 ON od.order_id = o.order_id
